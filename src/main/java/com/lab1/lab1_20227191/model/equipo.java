@@ -8,6 +8,7 @@ public class equipo {
     private String fechaAdquisicion;
 
     //CONSTRUCTOR
+    //pull
 
 
     public equipo(String nombre, String tipo, String codigoActivo, String fechaAdquisicion) {
