@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Equipo Tecnológico</title>
+</head>
+<body>
+<h2>Registro de Equipo Tecnológico</h2>
+
+<p th:if="${error}" th:text="${error}" style="color:red;"></p>
+
+<form action="/equipos/registrar" method="get">
+    <label>Nombre del Equipo:</label><br>
+    <input type="text" name="nombre" required><br><br>
+
+    <label>Tipo de Equipo:</label><br>
+    <select name="tipo">
+        <option value="Laptop">Laptop</option>
+        <option value="PC">PC</option>
+        <option value="Servidor">Servidor</option>
+    </select><br><br>
+
+    <label>Código de Activo:</label><br>
+    <input type="text" name="codigoActivo" required><br><br>
+
+    <label>Fecha de Adquisición:</label><br>
+    <input type="date" name="fechaAdquisicion" required><br><br>
+
+    <button type="submit">Registrar Equipo</button>
+</form>
+
+<br>
+<a th:href="@{/equipos/listado}">Ver listado de equipos</a>
+</body>
+</html>

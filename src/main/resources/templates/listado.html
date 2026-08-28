@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Equipos Registrados</title>
+</head>
+<body>
+<h2>Listado de Equipos Registrados</h2>
+
+<form onsubmit="event.preventDefault(); window.location.href='/equipos/buscar/' + document.getElementById('codigo').value;">
+    <input type="text" id="codigo" placeholder="Buscar por código de activo">
+    <button type="submit">Buscar</button>
+</form>
+<a th:href="@{/equipos/listado}">Ver todos</a>
+
+<p th:if="${mensaje}" th:text="${mensaje}" style="color:red;"></p>
+
+<table border="1" cellpadding="6">
+    <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Código Activo</th>
+        <th>Fecha Adquisición</th>
+    </tr>
+    <tr th:if="${#lists.isEmpty(equipos)}">
+        <td colspan="4">No hay equipos registrados.</td>
+    </tr>
+    <tr th:each="equipo : ${equipos}">
+        <td th:text="${equipo.nombre}"></td>
+        <td th:text="${equipo.tipo}"></td>
+        <td th:text="${equipo.codigoActivo}"></td>
+        <td th:text="${equipo.fechaAdquisicion}"></td>
+    </tr>
+</table>
+
+<br>
+<a th:href="@{/equipos/registro}">Registrar nuevo equipo</a>
+</body>
+</html>
